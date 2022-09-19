@@ -1,0 +1,45 @@
+This snake file is going to go in my personal portfolio. During my senior year I was advised to the
+issues involved in publicly displaying school projects, especially in reference to my VM and Compiler.
+I decided I would just start work on my own projects. People will still be able to copy code, but if
+it isn't specific projects assigned by professors, I feel like it will be more obscure and just not 
+searched out by people wanting to copy paste code.
+
+GOALS
+I want to try to incorporate microservices into my code.
+I want to focus on proper testing.
+
+
+I'm reading 
+	Enterprise Java Microservices by Ken Finnigan now (9/19/22).
+		Finished Chapter One. (9/19/22)
+	Testing Java Microservices: Using Arquillian, Hoverfly, AssertJ, JUnit, Selenium, and Mockito (9/19/22).
+
+
+I was thinking I would do a snake game.
+	Initially it will just be a standard game.
+		I'll start with the design of the game.
+		I'll then do testing design 
+		I'll then start coding
+		I'll use a GUI
+	I'll add the ability to adjust the size of the game
+	I'll add the ability to skip to certain levels
+	I'll add an AI component that will play the game itself as a display of the game
+		I'll test different heuristics to see what is more important in decision making (This will take part after completion of the game.)
+		I'll also have to create a different option to display in case of failure(display high scores, display a picture)
+	I'll keep highscore records/player stats
+	
+	what makes a winner?
+		getting the biggest snake the fastest/efficiency
+		living longest/preservation
+		keeping the biggest snake alive longest.
+		
+	
+
+Design
+	Snake
+		Board <-- boundaries/size/"around the world"
+		snake controls <-- turn/grow/speed
+		food logic <-- placement
+		Game <-- death/when the snake grows
+	
+		
