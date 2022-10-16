@@ -5,6 +5,7 @@ public class Board {
 	int boardSize;
 	boolean end;
 	Pair food;
+	Pair head;
 	Snake snake;
 	
 	public final int UP = 0;
@@ -29,68 +30,58 @@ public class Board {
 			board[start][i] = 1;
 			this.snake.grow(new Pair(start,i));
 		}
+		this.head = this.snake.getHead();
 		placeFood();
 	}
 	
 	public void move(int dir) {
-		Pair first = this.snake.snake.getFirst();
-		Pair last = this.snake.snake.getLast();
-		Pair temp = first;
-		int x = first.getX();
-		int y = first.getY();
+		Pair temp = this.snake.getHead();
+		//Pair temp = this.head;
+		Pair last = this.snake.getTail();
+		int x = temp.getX();
+		int y = temp.getY();
 		if(dir == UP) {
 			if(y-1>=0) {
 				//System.out.println("UP");
 				y--;
 			}else {
-				System.out.println("Hit boundary U");
 				this.end = true;
 			}
 		}else if(dir == DOWN) {
 			if(y+1<this.boardSize) {
 				y++;
 			}else {
-				System.out.println("Hit boundary D");
 				this.end = true;
 			}
 		}else if(dir == RIGHT) {
 			if(x+1<this.boardSize) {
-				//System.out.println("right");
 				x++;
 			}else {
-				System.out.println("Hit boundary R");
 				this.end = true;
 			}
 		}else if(dir == LEFT){
 			if(x-1>=0) {
-				//System.out.println("left");
 				x--;
 			}else {
-				System.out.println("Hit boundary L");
 				this.end = true;
 			}
 		}
 		//move head
 		temp = new Pair(x,y);
 		//if food, just grow else move tail
-		if(board[y][x] == 1){
-			System.out.println("Hit snake "+first.getX()+" "+first.getY());
-			System.out.println("Hit snake "+this.snake.getHead().getX()+" "+this.snake.getHead().getY());
-			System.out.println("Hit snake "+x+" "+y);
-			for(Pair each: this.snake.snake) {
-				System.out.print(each.getX()+" "+each.getY()+", ");
-			}
+		if(this.snake.snake.contains(temp)){
 			this.end = true;
 			
 		}else if(board[y][x] == 2) {
-			this.snake.snake.addFirst(temp);
 			board[y][x] = 1;
 			placeFood();
-		}else {
 			this.snake.snake.addFirst(temp);
-			this.snake.snake.removeLast();
+		}else {
 			board[last.getY()][last.getX()] = 0;
 			board[y][x] = 1;
+			this.head = temp;
+			this.snake.snake.addFirst(temp);
+			this.snake.snake.removeLast();
 		}
 	}
 	

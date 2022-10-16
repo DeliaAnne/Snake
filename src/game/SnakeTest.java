@@ -6,6 +6,7 @@ import org.junit.Test;
 
 public class SnakeTest {
 
+	
 	@Test
 	public void snakeTest() {
 		Snake sn = new Snake();
@@ -19,7 +20,7 @@ public class SnakeTest {
 		sn.grow(new Pair(0,1));
 		System.out.println(sn.getSize());
 		assert(sn.getSize() == 2);
-		assert(sn.getHead().getX() == 1);
+		assert(sn.getHead().getX() == 0);
 	}
 
 	@Test
@@ -29,10 +30,11 @@ public class SnakeTest {
 		sn.grow(new Pair(0,1));
 		sn.grow(new Pair(0,2));
 		sn.move(new Pair(1,2));
-		assert(sn.getHead().getX() == 2);
-		assert(sn.getHead().getY() == 1);
+		assert(sn.getHead().getX() == 1);
+		assert(sn.getHead().getY() == 2);
 		assert(sn.getSize() == 3);
-		assert(sn.getTail().getX() == 1);
+		assert(sn.getTail().getY() == 1);		
+		assert(sn.snake.contains(new Pair(0,1)));
 	}
 	
 }
