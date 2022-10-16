@@ -5,13 +5,13 @@ it isn't specific projects assigned by professors, I feel like it will be more o
 searched out by people wanting to copy paste code.
 
 GOALS
-I want to try to incorporate microservices into my code.
 I want to focus on proper testing.
+I want to learn AWT/SWING
 
 
 I'm reading 
 	Enterprise Java Microservices by Ken Finnigan now (9/19/22).
-		Finished Chapter One. (9/19/22)
+		Finished Chapter One. ()
 	Testing Java Microservices: Using Arquillian, Hoverfly, AssertJ, JUnit, Selenium, and Mockito (9/19/22).
 
 
@@ -33,13 +33,9 @@ I was thinking I would do a snake game.
 		living longest/preservation
 		keeping the biggest snake alive longest.
 		
-	
-
-Design
-	Snake
-		Board <-- boundaries/size/"around the world"
-		snake controls <-- turn/grow/speed
-		food logic <-- placement
-		Game <-- death/when the snake grows
-	
+	board: double array. reps a square/the whole board. 0=empty, 1=snake, 2=food.
+		track the first spot of snake and the last spot
+		moveUp->if (firstSpot.y>0 and <max) if(y,x == 2) grow snake
+		etc
+		growSnake move last spot and update that spot to one.-> genNewFood
 		
