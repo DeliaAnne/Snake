@@ -30,7 +30,6 @@ public class Pair {
 	
 	@Override
 	public int hashCode() {
-		System.out.println("hasCode being used");
 		return Objects.hash(x, y);
 	}
 
@@ -44,7 +43,7 @@ public class Pair {
 			return false;
 		}
 		Pair other = (Pair) obj;
-		return x == other.x && y == other.y;
+		return this.x == other.x && this.y == other.y;
 	}
 	
 }

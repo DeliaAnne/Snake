@@ -1,7 +1,7 @@
 package game;
 
 public class Board {
-	int[][] board;
+	//int[][] board;
 	int boardSize;
 	boolean end;
 	Pair food;
@@ -15,7 +15,7 @@ public class Board {
 	
 	public Board(int sz) {
 		this.boardSize = sz;
-		this.board = new int[sz][sz];
+		//this.board = new int[sz][sz];
 		this.end = false;
 		this.snake = new Snake();
 		placeSnake();
@@ -27,7 +27,7 @@ public class Board {
 		int end = start-3; // 1
 		for(int i =end; i<start; i++) {
 			System.out.println(start+", "+end);
-			board[start][i] = 1;
+			//board[start][i] = 1;
 			this.snake.grow(new Pair(start,i));
 		}
 		this.head = this.snake.getHead();
@@ -37,7 +37,6 @@ public class Board {
 	public void move(int dir) {
 		Pair temp = this.snake.getHead();
 		//Pair temp = this.head;
-		Pair last = this.snake.getTail();
 		int x = temp.getX();
 		int y = temp.getY();
 		if(dir == UP) {
@@ -72,13 +71,10 @@ public class Board {
 		if(this.snake.snake.contains(temp)){
 			this.end = true;
 			
-		}else if(board[y][x] == 2) {
-			board[y][x] = 1;
+		}else if(this.food.equals(temp)) {
 			placeFood();
 			this.snake.snake.addFirst(temp);
 		}else {
-			board[last.getY()][last.getX()] = 0;
-			board[y][x] = 1;
 			this.head = temp;
 			this.snake.snake.addFirst(temp);
 			this.snake.snake.removeLast();
@@ -90,7 +86,9 @@ public class Board {
 	}
 	
 	public void placeFood() {
-		food = Food.generateFood(boardSize, board);
-		board[food.getY()][food.getX()] = 2;
+		food = Food.generateFood(boardSize);
+		if(this.snake.snake.contains(food)) {
+			placeFood();
+		}
 	}
 }
