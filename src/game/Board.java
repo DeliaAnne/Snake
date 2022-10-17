@@ -26,7 +26,6 @@ public class Board {
 		int start = (boardSize)/2; //4
 		int end = start-3; // 1
 		for(int i =end; i<start; i++) {
-			System.out.println(start+", "+end);
 			//board[start][i] = 1;
 			this.snake.grow(new Pair(start,i));
 		}
@@ -36,12 +35,10 @@ public class Board {
 	
 	public void move(int dir) {
 		Pair temp = this.snake.getHead();
-		//Pair temp = this.head;
 		int x = temp.getX();
 		int y = temp.getY();
 		if(dir == UP) {
 			if(y-1>=0) {
-				//System.out.println("UP");
 				y--;
 			}else {
 				this.end = true;
